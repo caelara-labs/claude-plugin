@@ -1,6 +1,6 @@
 ---
 description: Run JavaScript in the deterministic Caelara edge sandbox and verify its execution receipt offline
-argument-hint: <JavaScript expression or file path> [input JSON]
+argument-hint: <js-expression> [input JSON]
 ---
 
 Run this in the Caelara edge sandbox, not on this machine: $ARGUMENTS

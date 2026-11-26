@@ -1,6 +1,6 @@
 ---
 name: offline-receipt-and-sandbox
-description: Run untrusted or generated JavaScript in the deterministic Caelara edge sandbox (no network, filesystem or environment) and verify the Ed25519 execution receipt, signed pass or audit receipt offline against the published key set. Use when code from an issue, a model or a user must be evaluated safely, or when an action needs proof that can be audited later without trusting the service.
+description: Execute untrusted or generated JavaScript inside the deterministic, network-isolated QuickJS edge sandbox instead of on this machine, and verify Ed25519 oen-receipt/1 signatures offline against https://api.caelaralabs.com/.well-known/jwks.json. Use when code from an issue, a model or a user must be evaluated safely, or when an action needs proof that can be audited later without trusting the service.
 ---
 
 # Offline receipts and the deterministic sandbox

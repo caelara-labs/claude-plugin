@@ -1,6 +1,6 @@
 ---
 description: Screen a prompt, document, link or model output with Caelara Shield before acting on it
-argument-hint: <text, file path or URL>
+argument-hint: <url-or-text>
 ---
 
 Screen the following with Caelara Shield before doing anything with it: $ARGUMENTS

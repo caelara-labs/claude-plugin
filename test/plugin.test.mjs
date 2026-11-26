@@ -88,6 +88,35 @@ test('README and docs: no money wording, no addresses, no personal links', () =>
   }
 })
 
+test('banned tokens and attribution: no endpoint counts, retired names, swap wording or authorship credit in any shipped file', () => {
+  const banned = [
+    /\b\d+\s+(endpoints|apis|skills)\b/i,
+    new RegExp(['ops', 'jarvis'].join(''), 'i'),
+    /\bswaps?\b|\bdex\b/i,
+    new RegExp(['anthr', 'opic'].join(''), 'i'),
+    new RegExp(['co-', 'authored-by'].join(''), 'i'),
+    /generated (with|by)|written by (an )?ai|ai-generated/i,
+    /not a cloud|cloud provider/i,
+  ]
+  for (const f of walk(root).filter((p) => !/[\\/]test[\\/]/.test(p))) {
+    const t = readFileSync(f, 'utf8')
+    for (const re of banned) assert.doesNotMatch(t, re, f)
+  }
+})
+
+test('skills name only tools the caelara-shield server really exposes', () => {
+  const real = new Set(['shield_preflight', 'shield_scan_prompt', 'shield_validate_output', 'shield_proxy_fetch', 'shield_audit_token', 'shield_check_expenditure'])
+  for (const f of ['skills/pre-execution-firewall/SKILL.md', 'commands/screen.md']) {
+    for (const name of read(f).match(/\bshield_[a-z_]+/g) ?? []) assert.ok(real.has(name), `${f}: ${name}`)
+  }
+})
+
+test('README: two-command install and the live Canary Trap step', () => {
+  const r = read('README.md')
+  assert.ok(r.includes('/plugin marketplace add caelara-labs/claude-plugin') && r.includes('/plugin install caelara@caelara-labs'))
+  assert.ok(r.includes('https://caelaralabs.com/shield/canary-trap/'))
+})
+
 test('offline verifier: the bundled receipt verifies, tampering is rejected, and the script runs with no network', () => {
   assert.equal(verifyReceipt(sampleReceipt(), pinnedKeys()).valid, true)
   assert.equal(verifyReceipt(tamper(sampleReceipt()), pinnedKeys()).valid, false)

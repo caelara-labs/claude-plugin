@@ -4,25 +4,32 @@
 [![shield-mcp](https://img.shields.io/npm/v/@caelaralabs/shield-mcp?label=shield-mcp&color=7FC8A0)](https://www.npmjs.com/package/@caelaralabs/shield-mcp)
 [![mcp](https://img.shields.io/npm/v/@caelaralabs/mcp?label=mcp&color=7FC8A0)](https://www.npmjs.com/package/@caelaralabs/mcp)
 
-A pre-execution firewall for coding agents, by Caelara Labs (https://caelaralabs.com) · Software that decides, never custody.
+The runtime security, scoped-key and verifiable audit layer that sits underneath coding-agent skills and MCP workflows.
+By Caelara Labs (https://caelaralabs.com) · Software that decides, never custody.
 
-It screens what the agent reads and sends before it acts, runs untrusted code in a deterministic sandbox, gives
-automation least-privilege sub-keys with human approval, and verifies every decision with an Ed25519 receipt offline.
+Skills and MCP servers decide what an agent can do. This plugin decides whether each step should run: it screens what the
+agent reads and sends before it acts, runs untrusted code in a network-isolated sandbox, gives sub-agents route-locked
+sub-keys instead of your master key, holds high-impact changes for a person with a before and after diff, and backs every
+decision with an Ed25519 receipt you verify offline.
 
-## Install (10 seconds)
+## Install (two commands)
 
 ```text
 /plugin marketplace add caelara-labs/claude-plugin
 /plugin install caelara@caelara-labs
 ```
 
-Then, once, set up a key for this machine (stored in `~/.caelaralabs/credentials.json`, never in the project):
+No key is ever written into this plugin. On first use the servers set up a trial key for this installation and keep it in
+`~/.caelaralabs/credentials.json`; to use your own key, export `CAELARA_API_KEY` and `CAELARA_KEY` in your shell, or run
+`npx -y @caelaralabs/shield-mcp init` once.
 
-```bash
-npx -y @caelaralabs/shield-mcp init
-```
+## See it catch a live attack
 
-Or export `CAELARA_API_KEY` (and `CAELARA_KEY`) in your shell. No key is ever written into this plugin.
+1. Open the Canary Trap: https://caelaralabs.com/shield/canary-trap/ . It is a harmless test page whose payload asks an
+   agent to reveal its instructions, shown once in a visible block and once hidden in an HTML comment.
+2. Copy the text of its "The test payload" block and ask the agent: `/caelara:screen <the pasted payload>`
+3. The screen answers `block` with findings such as `instruction_override` and `system_prompt_exfil`, and the agent
+   treats the payload as data instead of following it. Only a digest and the verdict are kept.
 
 ## What it adds
 

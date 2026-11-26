@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Caelara Labs pre-execution firewall for coding agents: screen prompts, links and outputs before they act, run code in a deterministic sandbox, scope sub-keys with human approval, and verify Ed25519 receipts offline.",
+  "description": "Pre-execution runtime firewall, scoped sub-key guard, human-approval diffs, and offline-verifiable Ed25519 receipts for Claude Code and agent skills. Software that decides, never custody.",
   "license": "MIT",
   "author": "Caelara Labs <ops@caelaralabs.com>",
   "scripts": {

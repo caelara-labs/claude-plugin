@@ -1,12 +1,13 @@
 ---
 name: scoped-subkey-and-hitl-guard
-description: Give an agent or script least-privilege access with a scoped, expiring Caelara sub-key, check an action against a policy before it runs, and route risky actions to a person with a before and after diff. Use when automating actions that change data, call external services or spend units, or when handing work to another agent.
+description: Mint route-locked, capped, expiring sub-keys so sub-agents never inherit the master credential, evaluate deterministic policy rules over an action digest before it runs, and escalate high-impact mutations to a person with a before and after change diff. Use when automating actions that change data or call external services, or when handing work to another agent or skill.
 ---
 
 # Scoped sub-key and human-in-the-loop guard
 
-Least privilege for automation: the agent gets only the routes it needs, a hard cap and an expiry, and a person approves
-anything the policy marks for review.
+Least privilege for automation: a sub-agent gets only the routes it needs, a hard cap and an expiry, never the master key.
+Every high-impact mutation is checked against deterministic rules, and anything marked for review waits for a person who
+sees exactly what changes.
 
 ## 1. Mint a scoped sub-key (from a `ck_edge_` or `ck_pass_` key)
 
