@@ -1,0 +1,22 @@
+{
+  "name": "caelara",
+  "version": "1.0.0",
+  "description": "Caelara Labs pre-execution firewall for coding agents: screen prompts, links and outputs before they act, run code in a deterministic sandbox, scope sub-keys with human approval, and verify Ed25519 receipts offline.",
+  "author": {
+    "name": "Caelara Labs",
+    "email": "ops@caelaralabs.com",
+    "url": "https://caelaralabs.com"
+  },
+  "homepage": "https://workbench.caelaralabs.com",
+  "repository": "https://github.com/caelara-labs/claude-plugin",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "security",
+    "prompt-injection",
+    "firewall",
+    "guardrails",
+    "ed25519",
+    "zero-retention"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "note": "Pinned copy of https://api.caelaralabs.com/.well-known/jwks.json. Refresh with --live.",
+  "keys": [
+    {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "Y_nQjN3qiv_mfk0VLRpKvwVFMeVPkf2dY6AwQNqH9WU",
+      "kid": "oen-e507b0f5aef381b9",
+      "use": "sig",
+      "alg": "EdDSA"
+    },
+    {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "7vY4Sxc6UoHbHCF5MFCjoPEZLpgEOPT3ZJfYJGvrhKU",
+      "kid": "oen-c5aa10e32795c46f",
+      "use": "sig",
+      "alg": "EdDSA"
+    }
+  ]
+}

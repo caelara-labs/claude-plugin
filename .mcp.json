@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "caelara-shield": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@caelaralabs/shield-mcp"
+      ]
+    },
+    "caelara-edge": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@caelaralabs/mcp"
+      ]
+    }
+  }
+}
